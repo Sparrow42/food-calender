@@ -1,0 +1,65 @@
+/*header*/
+.header-wrapper {
+    background-color: orange;
+    height: 60px;
+}
+
+.header-logo {
+    font-size: 25px;
+    margin: 0mm;
+    padding: 0mm 5mm;
+    color: rgba(255, 255, 255, 0.849);
+    display: inline-block;
+    float: left;
+}
+
+#nav {
+    list-style: none;
+    overflow: hidden;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    float: left;
+}
+
+#nav li {
+    width: 140px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+}
+
+#nav li a {
+    text-decoration: none;
+    color: rgb(24, 22, 22);
+    font-weight: bold;
+}
+
+/*footer*/
+.footer-wrapper {
+    background-color: orange;
+}
+
+.footer-logo {
+    padding: 3mm 5mm;
+    color: rgba(255, 255, 255, 0.849);
+}
+
+
+/*home*/
+.calender-wrapper > img {
+    width: 700px;
+}
+
+/*pages*/
+.titleunderbtn-container {
+    display: block !important;
+}
+
+.foodreg-form-container, .foodedit-form-container {
+    float: left;
+}
+
+.favfood-table-container {
+    display: inline-block;
+}
+
