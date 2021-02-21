@@ -32,7 +32,7 @@ export const Header = (props) => {
             <nav>
               <ul id="nav">
                 <li>
-                  <Link to='/home'>ホーム変更後</Link>
+                  <Link to='/home'>ホーム</Link>
                 </li>
                 <li>
                   <Link to='/myfood/list'>Myフード</Link>
