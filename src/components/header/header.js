@@ -32,13 +32,16 @@ export const Header = (props) => {
             <nav>
               <ul id="nav">
                 <li>
-                  <Link to='/home'>Home</Link>
+                  <Link to='/home'>ホーム変更後</Link>
                 </li>
                 <li>
-                  <Link to='/about'>About</Link>
+                  <Link to='/myfood/list'>Myフード</Link>
                 </li>
                 <li>
-                  <Link to='/users'>Users</Link>
+                  <Link to='/myexacise/list'>Myエクササイズ</Link>
+                </li>
+                <li>
+                  <Link to='/usage'>使い方</Link>
                 </li>
               </ul>
             </nav>
