@@ -6,7 +6,7 @@ import {
     Link
   } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import { FavFoodTable } from './myFoodTable';
+import { FavFoodTable } from './myFoodChooseList';
 
 
 const EditForm = () => {
