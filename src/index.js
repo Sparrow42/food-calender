@@ -12,6 +12,7 @@ import { Footer } from './components/footer';
 import { Home } from './components/pages/home';
 import { FoodEdit } from './components/pages/foodEdit';
 import { FoodReg } from './components/pages/foodReg';
+import { myFoodList } from './components/pages/myFoodList';
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                 <Route exact path='/users' component={Users} />
                 <Route exact path='/food/:foodId/edit' component={FoodEdit} />
                 <Route exact path='/food/register' component={FoodReg} />
+                <Route exact path='/myfood/list' component={myFoodList} />
                 <Route exact path='/home' component={Home} />
                 <Route component={Home} />
               </Switch>
