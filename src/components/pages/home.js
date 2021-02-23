@@ -61,7 +61,7 @@ const useStyles = makeStyles({
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>食べ物名</TableCell>
+              <TableCell>フード名</TableCell>
               <TableCell align="right">カロリー</TableCell>
               <TableCell align="right">画像</TableCell>
               <TableCell align="right"></TableCell>

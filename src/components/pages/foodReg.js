@@ -29,6 +29,7 @@ const RegForm = () => {
         alert('次のメッセージが送信されました: ' + message);
     };
     
+    
     return (
         <>
         <div className="foodreg-form-container">

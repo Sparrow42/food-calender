@@ -30,24 +30,24 @@ const useStyles = makeStyles({
   
   //列：食べ物名、カロリー、画像
   const rows = [
-    createData('プリン', '/img/food_pudding.png'),
-    createData('パン', '/img/food_bread.png'),
-    createData('ラーメン', '/img/food_ramen.png')
+    createData('腹筋', '/img/food_pudding.png'),
+    createData('大胸筋', '/img/food_bread.png'),
+    createData('下半身', '/img/food_ramen.png')
   ];
   
-  export const myFoodList = () => {
+  export const myExaciseList = () => {
     const classes = useStyles();
   
     return (
     <>
     <div className='favfood-table-container'>
       <TableContainer component={Paper}>
-        <h3>Myフード一覧</h3>
-        <Button variant="contained"><Link to='/myfood/register'>新規登録</Link></Button>
+        <h3>Myエクササイズ一覧</h3>
+        <Button variant="contained"><Link to='/myexacise/register'>新規登録</Link></Button>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>フード名</TableCell>
+              <TableCell>エクササイズ名</TableCell>
               <TableCell align="right">画像</TableCell>
               <TableCell align="right"></TableCell>
             </TableRow>
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
                 </TableCell>
                 <TableCell align="right"> <img src={row.img} /> </TableCell>
                 <TableCell align="right">
-                    <Button variant="contained"><Link to='/myfood/:foodId/edit'>編集</Link></Button>
+                    <Button variant="contained"><Link to='/myexacise/:exaciseId/edit'>編集</Link></Button>
                     <Button variant="contained">削除</Button>
                 </TableCell>                
               </TableRow>
