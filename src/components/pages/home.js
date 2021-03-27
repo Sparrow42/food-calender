@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import request from 'superagent'
 import {
     BrowserRouter as Router,
     Route,
     Link
   } from 'react-router-dom';
+import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -30,25 +32,17 @@ const useStyles = makeStyles({
     }
 });
 
-// const [state, setState] = React.useState({
-//   checkedA: true,
-//   checkedB: true,
-// });
 
-// const handleChange = (event) => {
-//   setState({ ...state, [event.target.name]: event.target.checked });
-// };
-
-  function createData(name, calories, img) {
-    return { name, calories, img };
-  }
+function createData(name, calories, img) {
+  return { name, calories, img };
+}
   
-  //列：食べ物名、カロリー、画像
-  const rows = [
-    createData('プリン', 159, '/img/food_pudding.png'),
-    createData('パン', 237, '/img/food_bread.png'),
-    createData('ラーメン', 262, '/img/food_ramen.png')
-  ];
+//列：食べ物名、カロリー、画像
+const rows = [
+  createData('プリン', 159, '/img/food_pudding.png'),
+  createData('パン', 237, '/img/food_bread.png'),
+  createData('ラーメン', 262, '/img/food_ramen.png')
+];
   
   const BasicTable = () => {
     const classes = useStyles();
@@ -91,10 +85,24 @@ const useStyles = makeStyles({
 
 export const Home = (props) => {
     const classes2 = useStyles();
+    const [stateText, setStateText] = useState(["aaaa"]); 
+    
+    const stateTest = () => {
+      setStateText(["bbbb"])
+    };
+
+    const post = (e) => {
+      
+    };
     
     return (
         <>
             <h2>home</h2>
+            <h2>テスト中</h2>
+            <Button variant="contained" onClick={stateTest}>stateテストボタン</Button>
+            {stateText}
+            <Button variant="contained" onClick={post}>sqlテストボタン</Button>
+            
             <Grid component="label" container alignItems="center" spacing={1}>
               <Grid item>食べ物</Grid>
               <Grid item>
@@ -110,6 +118,8 @@ export const Home = (props) => {
             </Grid>
             <div className="calender-wrapper">
             <img src='/img/calender_example.png'></img>
+            <h2>カレンダー制作中</h2>
+            <Calendar />
             </div>
             <BasicTable />
         </>
