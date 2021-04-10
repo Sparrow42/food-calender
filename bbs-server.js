@@ -46,10 +46,8 @@ app.get('/api/write', (req, res) => {
   const q = req.query
   // URLパラメータの値をDBに書き込む
   db.insert({
-    name: "nnn3",
-    body: "bbb3",
-    //name: q.name,
-    //body: q.body,
+    name: q.name,
+    body: q.body,
     stime: (new Date()).getTime()
   }, (err, doc) => {
     console.log('doc:'+doc);

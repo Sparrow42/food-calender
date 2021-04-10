@@ -5,7 +5,6 @@ import {
     Route,
     Link
   } from 'react-router-dom';
-import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,6 +17,7 @@ import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
+import { MyCalendar } from './myCalendar';
 
 const useStyles = makeStyles({
     table: {
@@ -92,7 +92,19 @@ export const Home = (props) => {
     };
 
     const post = (e) => {
-      
+      request
+        .get('/api/write')
+        .query({
+          name: "test1_name",
+          body: "test1_body"
+        })
+        .end((err, data) => {
+          if (err) {
+            console.error(err)
+          }else {
+            console.log('complete');
+          }
+        })
     };
     
     return (
@@ -119,7 +131,7 @@ export const Home = (props) => {
             <div className="calender-wrapper">
             <img src='/img/calender_example.png'></img>
             <h2>カレンダー制作中</h2>
-            <Calendar />
+            <MyCalendar />
             </div>
             <BasicTable />
         </>
