@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
-//import 'react-calendar/dist/Calendar.css';
 
-export const MyCalendar = () => {
-  const [value, setValue] = useState(new Date());
-  const [tileValue, setTileValue] = useState(<p>sample</p>);
-
-  console.log(value);
-
+export const MyCalendar = (props) => {
+  //const [tileValue, setTileValue] = useState(<p>sample</p>);
+  
   function onChange(nextValue) {
-    console.log('aaa');
-    setValue(nextValue);
+    //setSelectDay(nextValue);
   }
 
-  function onClickDay(value, event) {
-    console.log('Clicked day: ', value);
+  function onClickDate(value, event) {
+    props.onDateChange(value);
   }
 
   const getTile = ({ activeStartDate, date, view }) => {
@@ -28,9 +23,9 @@ export const MyCalendar = () => {
   return (
     <Calendar
       onChange={onChange}
-      //onClickDay={(value, event) => alert('Clicked day: ', value)}
+      onClickDay={onClickDate}
       tileContent={getTile}
-      value={value}
+      value={props.selectDate}
     />
   );
 };

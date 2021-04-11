@@ -44,12 +44,19 @@ const rows = [
   createData('ラーメン', 262, '/img/food_ramen.png')
 ];
   
-  const BasicTable = () => {
+  const BasicTable = (props) => {
     const classes = useStyles();
+
+    const year = props.selectDate.getFullYear();
+    const month = props.selectDate.getMonth() + 1;
+    const date = props.selectDate.getDate();
+    const day = new String( '日月火水木金土' ).charAt( props.selectDate.getDay() );
+
+    const title = `${year}年${month}月${date}日（${day}）の実績`;
   
     return (
     <>
-    <h2>2019年5月17日の実績</h2>
+    <h2>{title}</h2>
     <Button variant="contained"><Link to='/food/register'>新規登録</Link></Button>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
@@ -86,7 +93,12 @@ const rows = [
 export const Home = (props) => {
     const classes2 = useStyles();
     const [stateText, setStateText] = useState(["aaaa"]); 
-    
+    const [selectDate, setSelectDate] = useState(new Date());
+
+    function handleDateChange(date) {
+      setSelectDate(date);
+    }
+
     const stateTest = () => {
       setStateText(["bbbb"])
     };
@@ -129,11 +141,10 @@ export const Home = (props) => {
               <Grid item>運動</Grid>
             </Grid>
             <div className="calender-wrapper">
-            <img src='/img/calender_example.png'></img>
             <h2>カレンダー制作中</h2>
-            <MyCalendar />
+            <MyCalendar selectDate={selectDate} onDateChange={handleDateChange} />
             </div>
-            <BasicTable />
+            <BasicTable selectDate={selectDate} />
         </>
 
     );
