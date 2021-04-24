@@ -47,10 +47,18 @@ const rows = [
   const BasicTable = (props) => {
     const classes = useStyles();
 
-    const year = props.selectDate.getFullYear();
-    const month = props.selectDate.getMonth() + 1;
-    const date = props.selectDate.getDate();
-    const day = new String( '日月火水木金土' ).charAt( props.selectDate.getDay() );
+    // const year = props.selectDate.getFullYear();
+    // const month = props.selectDate.getMonth() + 1;
+    // const date = props.selectDate.getDate();
+    // const day = new String( '日月火水木金土' ).charAt( props.selectDate.getDay() );
+
+    console.log('basictable1');
+    const year = props.selectDate[0].getFullYear();
+    const month = props.selectDate[0].getMonth() + 1;
+    const date = props.selectDate[0].getDate();
+    const day = new String( '日月火水木金土' ).charAt( props.selectDate[0].getDay() );
+
+    console.log('basictable2: ', props.selectDate);
 
     const title = `${year}年${month}月${date}日（${day}）の実績`;
   
@@ -69,15 +77,16 @@ const rows = [
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {/* note:テーブルの上が空いちゃうけど、DBからの入力が変わるので放置する */}
+            {props.selectDate && props.selectDate.map((row, index) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell align="right">{row.calorie}</TableCell>
                 <TableCell align="right"> <img src={row.img} /> </TableCell>
                 <TableCell align="right">
-                  <Button variant="contained"><Link to='/food/:foodId/edit'>編集</Link></Button>
+                  <Button variant="contained"><Link to={`/food/${row.foodId}/edit`}>編集</Link></Button>
                   <Button variant="contained">削除</Button>  
                 </TableCell>                
               </TableRow>
@@ -91,16 +100,24 @@ const rows = [
   }
 
 export const Home = (props) => {
-    const classes2 = useStyles();
-    const [stateText, setStateText] = useState(["aaaa"]); 
-    const [selectDate, setSelectDate] = useState(new Date());
+    const [stateText, setStateText] = useState(["aaaa"]);
+    //const [selectDate, setSelectDate] = useState(new Date());
+    const [selectDate, setSelectDate] = useState([ new Date(), {
+      foodId: '',
+      name: '', 
+      calorie: '', 
+      img: ''
+    }]);
 
-    function handleDateChange(date) {
-      setSelectDate(date);
+    console.log(selectDate);
+
+    function handleDateChange(value) {
+      //console.log(value);
+      setSelectDate(value);
     }
 
     const stateTest = () => {
-      setStateText(["bbbb"])
+      setStateText(["bbbb"]);
     };
 
     const post = (e) => {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 
 export const MyCalendar = (props) => {
-  function createData(date, name, img) {
-    return { date, name, img };
+  function createData(date, foodId, name, calorie, img) {
+    return { date, foodId, name, calorie, img };
   }
 
   const dateTemp1 = new Date(2021, 3, 12);
@@ -11,10 +11,20 @@ export const MyCalendar = (props) => {
   const dateTemp3 = new Date(2021, 3, 16);
 
   const rows = [
-    createData( dateTemp1, 'プリン', '/img/food_pudding.png'),
-    createData( dateTemp2, 'パン', '/img/food_bread.png'),
-    createData( dateTemp3, 'ラーメン', '/img/food_ramen.png')
+    createData( dateTemp1, '1', 'プリン', '150', '/img/food_pudding.png'),
+    createData( dateTemp2, '2', 'パン', '120', '/img/food_bread.png'),
+    createData( dateTemp3, '3', 'ラーメン', '30', '/img/food_ramen.png')
   ];
+
+  // const rows = { 
+  //     [dateTemp1]: {
+  //       {name: 'プリン', calorie:'150', img:'/img/food_pudding.png'},
+  //       {name: 'パン', calorie:'120', img:'/img/food_bread.png'}
+  //     },
+  //     [dateTemp3]: {
+  //       {name: 'ラーメン', calorie:'30', img:'/img/food_ramen.png'}
+  //     }
+  // };
 
   //const [tileValue, setTileValue] = useState(<p>sample</p>);
   
@@ -22,12 +32,30 @@ export const MyCalendar = (props) => {
     //setSelectDay(nextValue);
   }
 
-  function onClickDate(value, event) {
-    props.onDateChange(value);
+  function onClickDate(value) {
+    console.log('onclickdate');
+
+    //todo: 該当日付foodをDBから取ってくる操作に変える
+    const dispBasicTable = rows.filter((row) => {
+      console.log('dispBasic running');
+      return (value.getFullYear() === row.date.getFullYear() && 
+      value.getMonth() === row.date.getMonth() && 
+      value.getDate() === row.date.getDate()); 
+    });
+
+    console.log(dispBasicTable);
+    if(dispBasicTable.length !== 0){
+      const setArr = [value].concat(dispBasicTable);
+      //props.onDateChange([value, {name: dispBasicTable[0].name, calorie: dispBasicTable[0].calorie, img: dispBasicTable[0].img}]);
+      props.onDateChange(setArr);
+    }else{
+      props.onDateChange([value, {}]);
+    }
   }
 
   const getTile = ({ activeStartDate, date, view }) => {
-    console.log(date.getDate());
+    console.log('getTile1');
+    //console.log(date.getDate());
     const dispImg = rows.map((row) => {
       if(view === 'month' &&
       date.getFullYear() === row.date.getFullYear() && 
@@ -37,14 +65,9 @@ export const MyCalendar = (props) => {
         return (<div><img style={{width: 30}} src={row.img}></img></div>);
       }
     });
+    console.log('getTile2');
 
     return dispImg;
-
-    if(view === 'month' && date.getDay() === 0){
-      return (<p>It's Sunday!</p>);
-    }else{
-      return (<p> </p>);
-    }
   }
 
   return (
@@ -52,7 +75,7 @@ export const MyCalendar = (props) => {
       onChange={onChange}
       onClickDay={onClickDate}
       tileContent={getTile}
-      value={props.selectDate}
+      value={props.selectDate[0]}
     />
   );
 };
