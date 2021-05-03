@@ -144,7 +144,7 @@ export const Home = (props) => {
             {stateText}
             <Button variant="contained" onClick={post}>sqlテストボタン</Button>
             
-            <Grid component="label" container alignItems="center" spacing={1}>
+            <Grid component="label" container alignItems="center" spacing={0}>
               <Grid item>食べ物</Grid>
               <Grid item>
                 <Switch

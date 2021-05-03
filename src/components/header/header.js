@@ -14,7 +14,7 @@ const Logo = (props) => {
   return (
       <>
         <div className='header-logo'>
-            <img src='logo.PNG' />
+            <img src='/img/product_logo.PNG' />
         </div>
       </>
 
@@ -26,29 +26,29 @@ export const Header = (props) => {
     //<SimpleTabs />
     return (
         <>
-        <div className='header-wrapper'>           
+        <header className='header-wrapper'>           
             <Logo />
 
             <nav>
               <ul id="nav">
                 <li>
-                  <Link to='/home'>ホーム</Link>
+                  <Link to='/home'>HOME</Link>
                 </li>
                 <li>
-                  <Link to='/myfood/list'>Myフード</Link>
+                  <Link to='/myfood/list'>MY Food</Link>
                 </li>
                 <li>
-                  <Link to='/myexacise/list'>Myエクササイズ</Link>
+                  <Link to='/myexacise/list'>MY Exacise</Link>
                 </li>
                 <li>
-                  <Link to='/usage'>使い方</Link>
+                  <Link to='/usage'>USAGE</Link>
                 </li>
               </ul>
             </nav>
 
             <MenuListComposition />
 
-            </div>
+            </header>
             
         </>
 
