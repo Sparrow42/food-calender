@@ -5,11 +5,11 @@ export const Footer = (props) => {
     const {styles} = props;
     return (
         <>
-            <div className='footer-wrapper'>
+            <footer className='footer-wrapper'>
                 <div className='footer-logo'>
                     カロカレ
                 </div>
-            </div>
+            </footer>
         </>
 
     );

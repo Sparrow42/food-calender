@@ -21,6 +21,7 @@ const App = () => {
         <>
             <Router>
               <Header styles={styles} /> 
+              <main className='contents-wrapper'>
               <Switch>
                 <Route exact path='/bbs' component={BBSApp} /> 
                 <Route exact path='/about' component={About} />
@@ -33,6 +34,7 @@ const App = () => {
                 <Route exact path='/home' component={Home} />
                 <Route component={Home} />
               </Switch>
+              </main>
 
               <Footer />
             

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import request from 'superagent'
 import Calendar from 'react-calendar';
 
 export const MyCalendar = (props) => {
@@ -27,6 +28,8 @@ export const MyCalendar = (props) => {
   // };
 
   //const [tileValue, setTileValue] = useState(<p>sample</p>);
+
+  
   
   function onChange(nextValue) {
     //setSelectDay(nextValue);
@@ -54,8 +57,28 @@ export const MyCalendar = (props) => {
   }
 
   const getTile = ({ activeStartDate, date, view }) => {
-    console.log('getTile1');
-    //console.log(date.getDate());
+    // API作成（/api/food/calender?user_id=*?month=*?date=*）
+    // requestから抜け出せない問題発生中
+    const userId = 4;
+    const month = date.getMonth() + 1;
+    const queryDate = `${date.getFullYear().toString()}-${month.toString()}-${date.getDate().toString()}`;
+    // console.log('queryDate: ', queryDate);
+    
+    // request
+    //   .get('/api/food/calender')
+    //   .query({
+    //     user_id: userId, // 将来的にtokenになる
+    //     date: queryDate
+    //   })
+    //   .end((err, data) => {
+    //     console.log('comp');
+    //     if (err) {
+    //       console.error(err)
+    //     }else {
+    //       console.log('complete');
+    //     }
+    //   });
+
     const dispImg = rows.map((row) => {
       if(view === 'month' &&
       date.getFullYear() === row.date.getFullYear() && 
@@ -65,8 +88,6 @@ export const MyCalendar = (props) => {
         return (<div><img style={{width: 30}} src={row.img}></img></div>);
       }
     });
-    console.log('getTile2');
-
     return dispImg;
   }
 
@@ -76,6 +97,7 @@ export const MyCalendar = (props) => {
       onClickDay={onClickDate}
       tileContent={getTile}
       value={props.selectDate[0]}
+      locale={"en-US"}
     />
   );
 };

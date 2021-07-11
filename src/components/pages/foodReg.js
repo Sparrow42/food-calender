@@ -4,6 +4,7 @@ import {
   } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { FavFoodTable } from './myFoodChooseList';
 
@@ -35,10 +36,10 @@ const RegForm = () => {
         <div className="foodreg-form-container">
         <form onSubmit={handleSubmit}>
             <p>名称：
-                <input type="text" value={message} onChange={handleChange} />
+                <Input type="text" value={message} onChange={handleChange}/>
             </p>
             <p>画像：
-                <input type="file" />
+                <Input type="file" />
             </p>
             <input type="submit" value="登録" />
         </form>

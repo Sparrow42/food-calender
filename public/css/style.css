@@ -1,7 +1,16 @@
-body {
+body, #root {
     padding: 0;
-    
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  
 }
+
+footer {
+  margin-top: auto;
+}
+
 
 /*header*/
 .header-wrapper {
@@ -65,10 +74,27 @@ body {
     color: rgba(255, 255, 255, 0.849);
 }
 
+/*全般*/
+.contents-wrapper {
+    padding-top: 60px;
+    margin-top: 0px;
+}
 
 /*home*/
+.calendar-list-wrapper {
+    display: flex;
+    justify-content: center;
+    /* flex-basis: auto; */
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
 .calender-wrapper > img {
     width: 700px;
+}
+
+.right-side-list {
+    margin: 0 25px;
 }
 
 /*pages*/

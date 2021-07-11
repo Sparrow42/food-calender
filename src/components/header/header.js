@@ -23,7 +23,6 @@ const Logo = (props) => {
 
 export const Header = (props) => {
     const {styles} = props;
-    //<SimpleTabs />
     return (
         <>
         <header className='header-wrapper'>           
